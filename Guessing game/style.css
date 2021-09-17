@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:focus {
+  outline: none;
+}
+html {
+  font-size: 62.5%;
+  font-family: "Cinzel", serif;
+}
+body {
+  background-color: #222;
+  color: white;
+}
+.heading {
+  margin-top: 4rem;
+  font-size: 8rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.heading-text {
+  border: 2px solid white;
+  padding: 1rem;
+}
+.secret-number {
+  padding: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  width: 9rem;
+  height: 9rem;
+  background-color: white;
+  color: #222;
+  border-radius: 50%;
+}
+.secret-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+.section-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-field {
+  width: 14rem;
+  height: 6rem;
+  font-size: 3rem;
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 2rem;
+  border: none;
+}
+.btn {
+  font-family: "Cinzel", serif;
+  font-size: 3rem;
+  font-weight: 600;
+  width: 14rem;
+  height: 6rem;
+  border-radius: 2rem;
+  margin-left: 2rem;
+  border: none;
+  transition: all 0.4s;
+}
+.btn:hover {
+  background-color: gray;
+}
+.section-details {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  gap: 2rem;
+}
+
+/********************MEDIA QUERIES *************/
+@media (max-width: 43em) {
+  html {
+    font-size: 45%;
+  }
+}
+@media (max-width: 27em) {
+  .heading {
+    font-size: 5rem;
+    margin-top: 12rem;
+  }
+  .input-field {
+    width: 13rem;
+    height: 5rem;
+  }
+  .btn {
+    width: 13rem;
+    height: 5rem;
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 20em) {
+  html {
+    font-size: 40%;
+  }
+}
