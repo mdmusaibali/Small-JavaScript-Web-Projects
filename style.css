@@ -1,0 +1,42 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  height: 100vh;
+  font-family: "Gluten", cursive;
+  background-image: linear-gradient(to right, #da77f2, #be4bdb);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.heading-primary {
+  font-size: 5rem;
+}
+.content-links {
+  font-size: 3rem;
+  color: white;
+}
+.links-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  font-family: "Gluten", cursive;
+  font-size: 2.5rem;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 2rem;
+}
+.btn:hover {
+  background-color: #eebefa;
+}
