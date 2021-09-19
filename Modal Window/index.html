@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Window</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        font-family: "Poppins", sans-serif;
+        height: 100vh;
+        background: linear-gradient(to top left, #28b487, #7dd56f);
+      }
+      h1 {
+        margin-bottom: 1.5rem;
+      }
+      .hidden {
+        display: none;
+      }
+      .modal {
+        width: 40%;
+        background-color: white;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+        position: absolute;
+        color: black;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 3rem;
+        text-align: center;
+        z-index: 10;
+      }
+      .btn {
+        font-family: "Poppins", sans-serif;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1rem;
+        border: none;
+        font-size: 1.2rem;
+        border-radius: 2rem;
+      }
+      .btn:hover {
+        background-color: #ced4da;
+        cursor: pointer;
+      }
+      .close-modal {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+      }
+      .close-modal:hover {
+        cursor: pointer;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        backdrop-filter: blur(3px);
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 5;
+      }
+      @media (max-width: 768px) {
+        html {
+          font-size: 70%;
+        }
+      }
+      @media (max-width: 552px) {
+        .modal {
+          width: 70%;
+        }
+      }
+      @media (max-width: 320px) {
+        html {
+          font-size: 60%;
+        }
+        .modal {
+          width: 80%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn"><strong>Click me to know the secret</strong></button>
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h1>Secret Window</h1>
+      <p>
+        You are Awesome. Have faith in yourself.<br />
+        You can do anything as long as you have faith in yourself.<br />Be
+        confident.
+        <br />
+        <br />
+        (You can click on 'x' above, click anywhere around screen or press
+        escape on keyboard to close this secret window.)
+      </p>
+    </div>
+    <div class="overlay hidden"></div>
+    <script>
+      "use strict";
+      const modal = document.querySelector(".modal");
+      const overlay = document.querySelector(".overlay");
+      const btnOpenModal = document.querySelector(".btn");
+      const btnCloseModal = document.querySelector(".close-modal");
+      const showmodal = function () {
+        overlay.classList.remove("hidden");
+        modal.classList.remove("hidden");
+      };
+      const hidemodal = function () {
+        overlay.classList.add("hidden");
+        modal.classList.add("hidden");
+      };
+      btnOpenModal.addEventListener("click", showmodal);
+      btnCloseModal.addEventListener("click", hidemodal);
+      overlay.addEventListener("click", hidemodal);
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+          hidemodal();
+        }
+      });
+    </script>
+  </body>
+</html>

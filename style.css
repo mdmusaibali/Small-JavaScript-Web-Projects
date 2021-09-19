@@ -40,3 +40,9 @@ a {
 .btn:hover {
   background-color: #eebefa;
 }
+
+@media (max-width: 898px) {
+  html {
+    font-size: 45%;
+  }
+}
