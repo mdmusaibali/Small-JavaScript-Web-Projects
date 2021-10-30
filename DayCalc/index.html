@@ -205,16 +205,27 @@
         <p class="text-yoda">"${day} it shall be"<br />-Yoda</p>
         <a href="index.html"><button class="tryAgain">Me try again</button></a>
       </div>`;
+        const htmlEarly = `    <div class="yoda-box">
+        <div class="image-div">
+          <img class="image" src="yoda.jpeg" />
+        </div>
+        <p class="text-yoda">"${day} it shall be"<br />Too early born are you<br>-Yoda</p>
+        <a href="index.html"><button class="tryAgain">Me try again</button></a>
+      </div>`;
         if (
           date <= 0 ||
           date > 31 ||
           date === undefined ||
           month <= 0 ||
           month > 12 ||
-          month === undefined
+          month === undefined ||
+          year <= 0
         ) {
           container.classList.toggle("hide");
           body.insertAdjacentHTML("afterbegin", htmlFoolish);
+        } else if (year <= 1900) {
+          container.classList.toggle("hide");
+          body.insertAdjacentHTML("afterbegin", htmlEarly);
         } else {
           container.classList.toggle("hide");
           body.insertAdjacentHTML("afterbegin", html);
