@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap"
+      rel="stylesheet"
+    />
+    <title>WhatDayWasIBornINATOR</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      *:focus {
+        outline: none;
+      }
+      html {
+        font-family: "Irish Grover", cursive;
+      }
+      body {
+        background: #ff9966; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #ff5e62,
+          #ff9966
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #ff5e62,
+          #ff9966
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .box {
+        border-radius: 1rem;
+        width: 40%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      label {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      h1 {
+        text-align: center;
+        font-weight: 200;
+        margin-bottom: 1rem;
+      }
+      .heading {
+        font-weight: 600;
+        font-size: 2.5rem;
+      }
+      input {
+        width: 40%;
+        text-align: center;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        border: none;
+        font-size: 1.5rem;
+      }
+      button {
+        font-family: "Irish Grover", cursive;
+        font-size: 1.2rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: none;
+        background-color: #fa3438;
+      }
+      button:hover {
+        background-color: #fd6568;
+      }
+      .message {
+        margin: 0 auto;
+        width: 40%;
+        background-color: white;
+      }
+      .image {
+        width: 100%;
+        border-radius: 1rem;
+      }
+      .text-yoda {
+        right: 0;
+        font-size: 2rem;
+        text-align: center;
+      }
+      .yoda-box {
+        transition: all 0.8s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 40%;
+        height: 100vh;
+      }
+      .hide {
+        display: none;
+      }
+      /* MEDIA QUERIES */
+      @media (max-width: 1025px) {
+        html {
+          font-size: 70%;
+        }
+      }
+      @media (max-width: 769px) {
+        html {
+          font-size: 60%;
+        }
+        input {
+          width: 60%;
+        }
+      }
+      @media (max-width: 426px) {
+        .box {
+          width: 70%;
+        }
+        .yoda-box {
+          width: 60%;
+        }
+      }
+      @media (max-width: 321px) {
+        .box {
+          width: 75%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form class="box">
+        <h1 class="heading">What day were you born ?</h1>
+        <label>DATE</label>
+        <input class="input-date" type="number" />
+        <label>MONTH</label>
+        <input class="input-month" type="number" />
+        <label>YEAR</label>
+        <input class="input-year" type="number" />
+        <button class="btnSubmit">Submit</button>
+      </form>
+    </div>
+    <script>
+      const tryAgain = document.querySelector(".tryAgain");
+      const body = document.querySelector("body");
+      // const yodaBox = document.querySelector(".yoda-box");
+      const container = document.querySelector(".container");
+      const messageDiv = document.querySelector(".message");
+      const DayString = function (x) {
+        if (x === 0) {
+          return "Sunday";
+        } else if (x === 1) {
+          return "Monday";
+        } else if (x === 2) {
+          return "Tuesday";
+        } else if (x == 3) {
+          return "Wednesday";
+        } else if (x == 4) {
+          return "Thursday";
+        } else if (x == 5) {
+          return "Friday";
+        } else if (x == 6) {
+          return "Saturday";
+        }
+      };
+      const btnSubmit = document.querySelector(".btnSubmit");
+      btnSubmit.addEventListener("click", function () {
+        event.preventDefault();
+        const date = Number(document.querySelector(".input-date").value);
+        const month = Number(document.querySelector(".input-month").value);
+        const year = Number(document.querySelector(".input-year").value);
+        const dateInFormat = new Date(` ${month} ${date}  ${year}`);
+        const day = DayString(dateInFormat.getDay());
+        const htmlFoolish = `    <div class="yoda-box">
+        <div class="image-div">
+          <img class="image" src="yoda.jpeg" />
+        </div>
+        <p class="text-yoda">"Yoda foolish you think?"<br />-Yoda</p>
+        <a href="index.html"><button class="tryAgain">Me try again</button></a>
+      </div>`;
+        const html = `    <div class="yoda-box">
+        <div class="image-div">
+          <img class="image" src="yoda.jpeg" />
+        </div>
+        <p class="text-yoda">"${day} it shall be"<br />-Yoda</p>
+        <a href="index.html"><button class="tryAgain">Me try again</button></a>
+      </div>`;
+        if (
+          date <= 0 ||
+          date > 31 ||
+          date === undefined ||
+          month <= 0 ||
+          month > 12 ||
+          month === undefined
+        ) {
+          container.classList.toggle("hide");
+          body.insertAdjacentHTML("afterbegin", htmlFoolish);
+        } else {
+          container.classList.toggle("hide");
+          body.insertAdjacentHTML("afterbegin", html);
+        }
+      });
+    </script>
+  </body>
+</html>
