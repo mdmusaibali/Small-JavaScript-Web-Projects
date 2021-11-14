@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Irish+Grover&family=Open+Sans+Condensed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .hide {
+        display: none;
+      }
+      html {
+        font-size: 62.5%;
+        font-family: "Irish Grover", cursive;
+        font-family: "Open Sans Condensed", sans-serif;
+      }
+      .container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: lightblue;
+        font-size: 2.5rem;
+        letter-spacing: 0.3rem;
+      }
+      button {
+        font-family: "Irish Grover", cursive;
+        font-family: "Open Sans Condensed", sans-serif;
+        font-size: 2.5rem;
+        border: none;
+        padding: 1rem;
+        letter-spacing: 0.3rem;
+        margin-bottom: 1rem;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+      .para {
+        background-color: white;
+        padding: 0.8rem;
+      }
+      @media (max-width: 510px) {
+        html {
+          font-size: 50%;
+        }
+      }
+      @media (max-width: 400px) {
+        html {
+          font-size: 40%;
+        }
+      }
+      @media (max-width: 320px) {
+        html {
+          font-size: 30%;
+        }
+      }
+    </style>
+    <title>Random Color Generator</title>
+  </head>
+  <body>
+    <div class="container">
+      <button class="hide">Copy Color</button>
+      <div class="para">
+        <p>
+          Press anywhere to generate random color<br />Press as much as you
+          want!
+        </p>
+      </div>
+    </div>
+    <script>
+      console.log("What are you searching for in my console?😂");
+      const container = document.querySelector(".container");
+      const button = document.querySelector("button");
+      const para = document.querySelector(".para");
+      var randomInt, randomColor, color;
+      container.addEventListener("click", function (e) {
+        button.textContent = "Copy Color";
+        button.classList.remove("hide");
+        para.classList.add("hide");
+        randomInt = (min, max) =>
+          Math.floor(Math.random() * (max - min + 1) + min);
+        randomColor = () =>
+          `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+        color = randomColor();
+        container.style.backgroundColor = color;
+      });
+      button.addEventListener("click", function (e) {
+        navigator.clipboard.writeText(color);
+        this.textContent = "Color Copied!";
+        e.stopPropagation();
+      });
+    </script>
+  </body>
+</html>
